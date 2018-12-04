@@ -1,24 +1,38 @@
 from discord import Game
-from discord.ext.commands import Bot
+import discord
 import json
 import aiohttp
-
+import asyncio
+import requests
 
 BOT_PREFIX = ('!')
 TOKEN = 'NTE5NTE3Mjg3MjA4NzE0MjQx.Dugd0w.y6PqkMeTNN5h3BfqhRj3MUKShDA'
 
-client = Bot(command_prefix=BOT_PREFIX)
+client = discord.Client()
+@client.event
 
-@client.command()
-async def satusd():
-    url = 'https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI'
-    async with aiohttps.ClientSession()as session:
-        raw_response = awate session.get(url)
-        response = await raw_response.text()
-        repsonse = json.loads(response)
+async def on_message(message):
+    if message.author == client.user:
+        return
 
-        await client.sat("Satoshi price is : $" + response['USD'])
+    if message.content.startswith('!satusd'):
+            url = 'https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI'
+            response = requests.get(url)
+            data = response.text
+            parsed = json.loads(data)
+            satusd = parsed['USD']
 
+            msg = "Satoshi price is : $" + format(satusd)
+            await client.send_message(message.channel, msg)
 
+    elif message.content.startswith('!sateur'):
+            url = 'https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI'
+            response = requests.get(url)
+            data = response.text
+            parsed = json.loads(data)
+            sateur = parsed['EUR']
+
+            msg = "Satoshi price is : €" + format(sateur)
+            await client.send_message(message.channel, msg)
 
 client.run(TOKEN)
