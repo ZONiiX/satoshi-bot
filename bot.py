@@ -35,30 +35,19 @@ async def sateur():
 
 @client.command()
 async def calcsatusd(number):
-    number = int(number)
+    finalNumber = int(number)
     url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
     response = requests.get(url)
     data = response.text
     parsed = json.loads(data)
     usd_rate = parsed["USD"]
-    final_price = usd_rate*number
-    await client.say(format(final_price), '.2f')
+    final_price = usd_rate*finalNumber
+    await client.say("{0.author.mention}" + final_price)
 
 @client.event
 async def on_read():
     await client.change_presence(game=Game(name="with humans"))
     print("Logged in as " + client.user.name)
-
-
-@client.command()
-async def bitcoin():
-    url = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
-    async with aiohttp.ClientSession() as session:  # Async HTTP request
-        raw_response = await session.get(url)
-        response = await raw_response.text()
-        response = json.loads(response)
-        await client.say("Bitcoin price is: $" + response['bpi']['USD']['rate'])
-
 
 async def list_servers():
     await client.wait_until_ready()
