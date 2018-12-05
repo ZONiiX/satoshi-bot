@@ -11,7 +11,7 @@ from discord.ext.commands import Bot
 client = Bot(command_prefix= "!")
 
 
-TOKEN = ""
+TOKEN = "NTE5NTE3Mjg3MjA4NzE0MjQx.DunRAQ.zSB1Gq5WgPq2Gy5Cchmjrrp5HFA"
 
 @client.command()
 async def satusd(number, number2):
