@@ -54,7 +54,7 @@ async def commands():
     embed.add_field(name = "!prices", value = "!price, gives prices of BTC and SAT ", inline = False)
 
     await client.say(embed=embed)
-
+'''
 
 @client.command()
 async def price():
@@ -71,6 +71,8 @@ async def price():
     embed.add_field(name = "Satoshi USD", value= str(usd_rate))
     embed.add_field(name = "Satoshi EUR", value= str(eur_rate))
     await client.say(embed=embed)
+
+'''
 
 @client.event
 async def on_ready():
