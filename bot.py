@@ -8,11 +8,11 @@ from discord.ext.commands import Bot
 
 
 BOT_PREFIX = ("!")
-TOKEN = "NTE5NTE3Mjg3MjA4NzE0MjQx.Dugd0w.y6PqkMeTNN5h3BfqhRj3MUKShDA"  # Get at discordapp.com/developers/applications/me
+TOKEN = "NTE5NTE3Mjg3MjA4NzE0MjQx.Dul-Zg.VruNVU3_uiClMICRO4TX_fRFmDw"  # Get at discordapp.com/developers/applications/me
 
 client = Bot(command_prefix=BOT_PREFIX)
 
-
+"""
 @client.command()
 async def satusd():
     url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
@@ -31,18 +31,25 @@ async def sateur():
     parsed = json.loads(data)
     eur_rate = parsed["EUR"]
     await client.say("1 Satoshi is: $" +eur_rate)
-
+"""
 
 @client.command()
-async def calcsatusd(number):
-    finalNumber = int(number)
+async def calcsatusd(number, number2):
     url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
     response = requests.get(url)
     data = response.text
     parsed = json.loads(data)
     usd_rate = parsed["USD"]
-    final_price = usd_rate*finalNumber
-    await client.say("{0.author.mention}" + final_price)
+    int_usd_rate = float(usd_rate)
+
+
+    inputed_price = int(number)
+    inputed_amount = int(number2)
+    price = inputed_amount*inputed_price
+    final_price = format(price*int_usd_rate, '.2f')
+
+
+    await client.say('$'+str(final_price))
 
 @client.event
 async def on_read():
