@@ -13,29 +13,6 @@ TOKEN = "NTE5NTE3Mjg3MjA4NzE0MjQx.Dul-Zg.VruNVU3_uiClMICRO4TX_fRFmDw"  # Get at 
 
 client = Bot(command_prefix=BOT_PREFIX)
 
-"""
-@client.command()
-async def satusd():
-    url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
-    response = requests.get(url)
-    data = response.text
-    parsed = json.loads(data)
-    usd_rate = parsed["USD"]
-
-    await client.say("1 Satoshi is: $" + usd_rate)
-
-oh fuck yeah spread it- Barack Obama
-
-@client.command()
-async def sateur():
-    url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
-    response = requests.get(url)
-    data = response.text
-    parsed = json.loads(data)
-    eur_rate = parsed["EUR"]
-    await client.say("1 Satoshi is: $" +eur_rate)
-"""
-
 @client.command()
 async def satusd(number, number2):
     url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
