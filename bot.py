@@ -7,11 +7,9 @@ import discord
 from discord import Game
 from discord.ext.commands import Bot
 
-
-BOT_PREFIX = ("!")
 TOKEN = "NTE5NTE3Mjg3MjA4NzE0MjQx.Dul-Zg.VruNVU3_uiClMICRO4TX_fRFmDw"  # Get at discordapp.com/developers/applications/me
 
-client = Bot(command_prefix=BOT_PREFIX)
+client = Bot(command_prefix= "!")
 
 @client.command()
 async def satusd(number, number2):
@@ -21,7 +19,6 @@ async def satusd(number, number2):
     parsed = json.loads(data)
     usd_rate = parsed["USD"]
     int_usd_rate = float(usd_rate)
-
 
     inputed_price = int(number)
     inputed_amount = int(number2)
@@ -85,7 +82,6 @@ async def list_servers():
         for server in client.servers:
             print(server.name)
         await asyncio.sleep(600)
-
 
 client.loop.create_task(list_servers())
 client.run(TOKEN)
