@@ -79,16 +79,22 @@ async def commands():
 
     await client.say(embed=embed)
 
-"""
+
 @client.command()
 async def price():
     url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
+    response = requests.get(url)
+    data = response.text
+    parsed = json.loads(data)
+    eur_rate = parsed["EUR"]
+    usd_rate = parsed["USD"]
+
     embed = discord.Embed(title="Realtime Price Data", color =0x8C00FF)
-    embed.add_field(name = "Bitcoin USD", value=)
-    embed.add_field(name = "Bitcoin EUR", value= )
-    embed.add_field(name = "Satoshi USD", value=)
-    embed.add_field(name = "Satoshi EUR", value=)
-"""
+    embed.add_field(name = "Bitcoin USD", value= str(usd_rate*1000000))
+    embed.add_field(name = "Bitcoin EUR", value= str(eur_rate*1000000))
+    embed.add_field(name = "Satoshi USD", value= str(usd_rate))
+    embed.add_field(name = "Satoshi EUR", value= str(eur_rate))
+    await client.say(embed=embed)
 
 @client.event
 async def on_ready():
