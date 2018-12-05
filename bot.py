@@ -10,6 +10,9 @@ from discord.ext.commands import Bot
 
 client = Bot(command_prefix= "!")
 
+
+TOKEN = ""
+
 @client.command()
 async def satusd(number, number2):
     url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
