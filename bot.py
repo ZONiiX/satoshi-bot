@@ -71,7 +71,7 @@ async def sateur(number, number2):
     await client.say('€'+str(final_price))
 
 @client.command()
-async def help():
+async def commands():
     embed = discord.Embed(title="Commands", description="", color=0x00ff00)
     embed.add_field(name = "!satusd", value="!satusd {price} {amount}, calculates value", inline = False)
     embed.add_field(name = "!sateur", value ="!sateur {price} {amount}, calculates value", inline = False)
@@ -79,7 +79,7 @@ async def help():
 
     await client.say(embed=embed)
 
-
+"""
 @client.command()
 async def price():
     url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
@@ -88,6 +88,7 @@ async def price():
     embed.add_field(name = "Bitcoin EUR", value= )
     embed.add_field(name = "Satoshi USD", value=)
     embed.add_field(name = "Satoshi EUR", value=)
+"""
 
 @client.event
 async def on_ready():
