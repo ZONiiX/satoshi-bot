@@ -3,6 +3,7 @@ import asyncio
 import aiohttp
 import json
 import requests
+import discord
 from discord import Game
 from discord.ext.commands import Bot
 
@@ -22,6 +23,8 @@ async def satusd():
     usd_rate = parsed["USD"]
 
     await client.say("1 Satoshi is: $" + usd_rate)
+
+oh fuck yeah spread it- Barack Obama
 
 @client.command()
 async def sateur():
@@ -50,6 +53,7 @@ async def satusd(number, number2):
 
 
     await client.say('$'+str(final_price))
+
 @client.command()
 async def sateur(number, number2):
     url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
@@ -63,13 +67,31 @@ async def sateur(number, number2):
     inputed_amount = int(number2)
     price = inputed_amount*inputed_price
     final_price = format(price*int_eur_rate, '.2f')
+    
+    await client.say('€'+str(final_price))
+
+@client.command()
+async def help():
+    embed = discord.Embed(title="Commands", description="", color=0x00ff00)
+    embed.add_field(name = "!satusd", value="!satusd {price} {amount}, calculates value", inline = False)
+    embed.add_field(name = "!sateur", value ="!sateur {price} {amount}, calculates value", inline = False)
+    embed.add_field(name = "!prices", value = "!price, gives prices of BTC and SAT ", inline = False)
+
+    await client.say(embed=embed)
 
 
-    await client.say('$'+str(final_price))
+@client.command()
+async def price():
+    url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
+    embed = discord.Embed(title="Realtime Price Data", color =0x8C00FF)
+    embed.add_field(name = "Bitcoin USD", value=)
+    embed.add_field(name = "Bitcoin EUR", value= )
+    embed.add_field(name = "Satoshi USD", value=)
+    embed.add_field(name = "Satoshi EUR", value=)
 
 @client.event
-async def on_read():
-    await client.change_presence(game=Game(name="with humans"))
+async def on_ready():
+    await client.change_presence(game=Game(name="with Bitcoin"))
     print("Logged in as " + client.user.name)
 
 async def list_servers():
