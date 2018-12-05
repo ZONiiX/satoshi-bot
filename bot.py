@@ -6,8 +6,7 @@ import requests
 import discord
 from discord import Game
 from discord.ext.commands import Bot
-
-TOKEN = "NTE5NTE3Mjg3MjA4NzE0MjQx.DunRAQ.zSB1Gq5WgPq2Gy5Cchmjrrp5HFA"  # Get at discordapp.com/developers/applications/me
+ # Get at discordapp.com/developers/applications/me
 
 client = Bot(command_prefix= "!")
 
