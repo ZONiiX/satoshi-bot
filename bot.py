@@ -34,7 +34,7 @@ async def sateur():
 """
 
 @client.command()
-async def calcsatusd(number, number2):
+async def satusd(number, number2):
     url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
     response = requests.get(url)
     data = response.text
@@ -47,6 +47,22 @@ async def calcsatusd(number, number2):
     inputed_amount = int(number2)
     price = inputed_amount*inputed_price
     final_price = format(price*int_usd_rate, '.2f')
+
+
+    await client.say('$'+str(final_price))
+@client.command()
+async def sateur(number, number2):
+    url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
+    response = requests.get(url)
+    data = response.text
+    parsed = json.loads(data)
+    eur_rate = parsed["EUR"]
+    int_eur_rate = float(eur_rate)
+
+    inputed_price = int(number)
+    inputed_amount = int(number2)
+    price = inputed_amount*inputed_price
+    final_price = format(price*int_eur_rate, '.2f')
 
 
     await client.say('$'+str(final_price))
