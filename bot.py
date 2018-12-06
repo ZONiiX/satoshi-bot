@@ -54,10 +54,17 @@ async def commands():
     embed.add_field(name = "!prices", value = "!price, gives prices of BTC and SAT ", inline = False)
 
     await client.say(embed=embed)
-'''
 
 @client.command()
 async def price():
+
+    url2 = "https://api.coindesk.com/v1/bpi/currentprice.json"
+    response2 = requests.get(url2)
+    data2 = response2.text
+    parsed2 = json.loads(data2)
+    usd_parsed_btc = parsed2["bpi"]["USD"]["rate"]
+    eur_parsed_btc = parsed2["bpi"]["EUR"]["rate"]
+
     url = "https://gntf7hd0uj.execute-api.us-east-2.amazonaws.com/default/satoshiAPI"
     response = requests.get(url)
     data = response.text
@@ -65,14 +72,16 @@ async def price():
     eur_rate = parsed["EUR"]
     usd_rate = parsed["USD"]
 
-    embed = discord.Embed(title="Realtime Price Data", color =0x8C00FF)
-    embed.add_field(name = "Bitcoin USD", value= str(usd_rate*1000000))
-    embed.add_field(name = "Bitcoin EUR", value= str(eur_rate*1000000))
-    embed.add_field(name = "Satoshi USD", value= str(usd_rate))
-    embed.add_field(name = "Satoshi EUR", value= str(eur_rate))
-    await client.say(embed=embed)
+    usd_price = "$ `" +usd_rate + "`\n"
+    eur_price = "€ `" +eur_rate + "`\n"
 
-'''
+    btc_usd_price = "$ `" + usd_parsed_btc+ "`\n"
+    btc_eur_price = "€`" + eur_parsed_btc+ "`\n"
+
+    data = "SAT/USD: "+ usd_price + "SAT/EUR: "+ eur_price + "BTC/USD: " + btc_usd_price + "BTC/EUR" + btc_eur_price
+
+    embed = discord.Embed(title="Realtime Price Data", description=data, color =0x00ff00)
+    await client.say(embed=embed)
 
 @client.event
 async def on_ready():
