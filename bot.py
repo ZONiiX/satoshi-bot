@@ -78,7 +78,7 @@ async def price():
     btc_usd_price = "$ `" + usd_parsed_btc+ "`\n"
     btc_eur_price = "€`" + eur_parsed_btc+ "`\n"
 
-    data = "SAT/USD: "+ usd_price + "SAT/EUR: "+ eur_price + "BTC/USD: " + btc_usd_price + "BTC/EUR" + btc_eur_price
+    data = "SAT/USD: "+ usd_price + "SAT/EUR: "+ eur_price + "BTC/USD: " + btc_usd_price + "BTC/EUR:" + btc_eur_price
 
     embed = discord.Embed(title="Realtime Price Data", description=data, color =0x00ff00)
     await client.say(embed=embed)
